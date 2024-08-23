@@ -1,0 +1,18 @@
+AWS Project: Visualizing Data using Amazon QuickSight
+
+In this project, I explored the process of creating visualizations from a large dataset using Amazon S3 and Amazon QuickSight. My focus was on analyzing a real-world dataset of 50,000 best-selling products on Amazon.com, sourced from Bright Data. The project involved several key steps, from data preparation to creating insightful visualizations.
+
+Step 1: Downloading the Dataset
+To start, I downloaded the "Amazon Bestseller Dataset" CSV file and the accompanying "manifest.json" file. These files contained the data and instructions necessary for importing the dataset into Amazon S3. This dataset is a rich resource, reflecting real-time sales data and trends from Amazon's extensive catalog.
+
+Step 2: Storing the Dataset in Amazon S3
+Next, I created an Amazon S3 bucket to securely store the dataset. I named the bucket (e.g., “nyasha-amazon-project") and maintained the default settings to ensure simplicity and security. After uploading the dataset files into the bucket, I updated the "manifest.json" file with the correct S3 URL, which is essential for connecting the dataset to QuickSight.
+
+Step 3: Connecting S3 Bucket with Amazon QuickSight
+I then set up the connection between the S3 bucket and Amazon QuickSight. This involved navigating through the AWS Management Console, where I signed up for a free trial of QuickSight's Enterprise edition. By selecting Amazon S3 as my data source and providing the link to my "manifest.json" file, I established a seamless connection to begin visualizing the data.
+
+Step 4: Creating Visualizations
+Finally, with the data connected, I moved on to creating visualizations in Amazon QuickSight. I started by dragging fields into the visualization canvas to explore the data visually. I experimented with various graph types such as bar charts, pie charts, and line graphs to uncover insights, like identifying the most popular brands or trends within the dataset. The ability to sort, filter, and customize these graphs allowed me to tailor the visualizations to highlight key findings effectively.
+
+Reflection
+This project provided a hands-on experience with Amazon QuickSight and S3, enhancing my data visualization skills and my ability to work with cloud-based tools. It was a rewarding journey from raw data to polished visualizations, showcasing the power of Amazon's ecosystem in handling and analyzing large datasets.
