@@ -8,7 +8,7 @@ SELECT *
  SELECT MAX(total_laid_off), MAX(percentage_laid_off)
  FROM world_layoffs.layoffs_staging2;
  
- # Looking at Percentage to see how big these layoffs were
+ # Looking at Percentages to see how big these layoffs were
 SELECT *
  FROM world_layoffs.layoffs_staging2
  WHERE percentage_laid_off = 1
