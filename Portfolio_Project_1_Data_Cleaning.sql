@@ -5,13 +5,13 @@
 SELECT *
 FROM layoffs;
 
-#When we are data cleaning we usually follow a few steps
+#When I am data cleaning I usually follow a few steps
 #1. Remove Data
 #2. Standardize Data
 #3. Null Values or Blank values
 #4. Remove Any Columns or Rows
 
-#First thing we want to do is create a staging table. This is the one we will work in and clean the data. We want a table with the raw data in case something happens
+# The first thing I want to do is create a staging table. This is the one I  will work on and clean the data. I want a table with the raw data in case something happens
 CREATE TABLE layoffs_staging
 LIKE layoffs;
 
@@ -40,14 +40,14 @@ SELECT *
 FROM duplicate_cte
 WHERE row_num > 1;
 
-#let's just look at Ada to confirm
+#let's look at Ada to confirm
 SELECT *
 FROM layoffs_staging
 WHERE company = 'Ada';
 
-#it looks like these are all legitimate entries and shouldn't be deleted. We need to really look at every single row to be accurate
+# These are all legitimate entries and shouldn't be deleted. I need to look at every single row to be accurate
 
-#these are our real duplicates 
+#these are the real duplicates 
 WITH duplicate_cte AS
 (
 SELECT *,
@@ -59,9 +59,9 @@ SELECT *
 FROM duplicate_cte
 WHERE row_num > 1;
 
-#these are the ones we want to delete where the row number is > 1 or 2or greater essentially
+#these are the ones I want to delete where the row number is > 1 or 2 or greater essentially
 
- #now you may want to write it like this:
+ #now I want to write it like this:
 
 
 
@@ -121,7 +121,7 @@ FROM  layoffs_staging2
 WHERE country LIKE 'United States%'
 ORDER BY 1;
 
-#everything looks good except apparently we have some "United States" and some "United States." with a period at the end. Let's standardize this.
+#everything looks good except I have some "United States" and some "United States." with a period at the end. Let's standardize this.
 SELECT DISTINCT country, TRIM(TRAILING '.' FROM country)
 FROM layoffs_staging2
 ORDER BY 1;
@@ -137,18 +137,18 @@ FROM  layoffs_staging2;
 SELECT `date`
 FROM layoffs_staging2;
 
-#we can use str to date to update this field
+#I can use str to date to update this field
 UPDATE layoffs_staging2
 SET `date` = str_to_date(`date`, '%m/%d/%Y');
 
-#now we can convert the data type properly
+#now I can convert the data type properly
 ALTER TABLE layoffs_staging2
 MODIFY COLUMN `date` DATE;date;
 
 #3. Look at Null Values
 
 #the null values in total_laid_off, percentage_laid_off, and funds_raised_millions all look normal. I don't think I want to change that
-#I like having them null because it makes it easier for calculations during the EDA phase
+#I like having them null because it makes it easier for calculations during the EDA(Exploratory Data Analysis) phase
 
 # so there isn't anything I want to change with the null values
 
@@ -185,7 +185,7 @@ SET t1.industry = t2.industry
 WHERE (t1.industry IS NULL OR t1.industry = '')
 AND t2.industry IS NOT NULL;  
 
-#4. remove any columns and rows we need to
+#4. Remove any columns and rows 
 SELECT *
 FROM layoffs_staging2;
 
@@ -195,7 +195,7 @@ FROM  layoffs_staging2
 WHERE total_laid_off IS NULL
 AND percentage_laid_off IS NULL;
 
-#Delete Useless data we can't really use
+#Delete Useless data I can't use
 DELETE
 FROM  layoffs_staging2
 WHERE total_laid_off IS NULL
